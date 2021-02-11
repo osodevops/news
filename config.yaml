@@ -1,0 +1,58 @@
+baseURL: "http://news.osodevops.io"
+languageCode : "en-us"
+title: "Live new updates from the OSO team"
+paginate: 20
+pygmentsStyle: pygments
+
+params:
+  AuthorName: OSO Devs
+  GitHubUser: "sionsmith"
+  image: "images/osodevops.png"
+permalinks:
+  post: /:year/:month/:day/:title/
+
+taxonomies:
+  category: categories
+  tag: tag
+
+outputs:
+   home:
+      - HTML
+      - JSON
+      - RSS
+   page:
+      - HTML
+   section:
+      - HTML
+      - RSS
+   taxonomy:
+      - HTML
+      - RSS
+   taxonomyTerm:
+      - HTML
+      - RSS
+
+menu:
+  main:
+  - name: about
+    title: about
+    url: https://talks.rmoff.net/bio
+    weight: -10
+  - name: talks
+    title: talks
+    url: https://talks.rmoff.net
+    weight: -9
+  social:
+  - name: github
+    title: "fab fa-github-square"
+    url: https://github.com/osodevops/
+    weight: -6
+  - name: twitter
+    title: "fab fa-twitter-square"
+    url: https://twitter.com/osodevops/
+    weight: -7
+
+markup:
+  asciidocExt:
+    attributes: {allow-uri-read}
+    safeMode: unsafe
