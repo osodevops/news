@@ -30,15 +30,6 @@ jobs:
       - name: Build
         run: hugo
 
-      - name: Bump version and push tag
-        id: tagging
-        if: contains(github.ref, 'main')
-        uses: anothrNick/github-tag-action@1.21.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GIT_ORG_REPO_TAG }}
-          DEFAULT_BUMP: patch
-          WITH_V: "true"
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -49,3 +40,16 @@ jobs:
           # and the custom domain configured for GitHub pages will get dropped every
           # time the action runs…
           keep_files: true
+  version:
+    name: versioning
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Bump version and push tag
+        if: contains(github.ref, 'main')
+        uses: anothrNick/github-tag-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
+          WITH_V: "true"
+    needs: [ build-deploy ]
