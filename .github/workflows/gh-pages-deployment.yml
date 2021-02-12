@@ -12,7 +12,7 @@ jobs:
   build-deploy:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@mnaster
+      - uses: actions/checkout@master
         with:
           fetch-depth: '0'
 
