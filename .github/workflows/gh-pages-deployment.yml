@@ -12,7 +12,9 @@ jobs:
   build-deploy:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@mnaster
+        with:
+          fetch-depth: '0'
 
       - name: Install Ruby Dev
         run: sudo apt-get install ruby-dev
@@ -27,6 +29,15 @@ jobs:
 
       - name: Build
         run: hugo
+
+      - name: Bump version and push tag
+        id: tagging
+        if: contains(github.ref, 'main')
+        uses: anothrNick/github-tag-action@1.21.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_ORG_REPO_TAG }}
+          DEFAULT_BUMP: patch
+          WITH_V: "true"
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
