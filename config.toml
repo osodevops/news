@@ -1,0 +1,31 @@
+baseurl = "https://news.osodevops.io/"
+languageCode = "en-us"
+title = "news updates from the team"
+pygmentsstyle = "emacs"
+sectionPagesMenu = "main"
+Paginate = 10
+
+[author]
+	Handle = "OSO"
+	FirstName = "OSO"
+	LastName = "Team"
+	AboutPage = "/about"
+	Location = "London, UK"
+
+[params]
+	Description = "Internet weblog of Software (Mac, iOS, Web) Developer, Josh Johnson."
+	ShowCopyright = true
+	RSSEnabled = true
+	RSSMicropostTitles = false
+	mainSections = ["microposts"]
+
+[taxonomies]
+	tag = "tags"
+	category = "categories"
+	series = "series"
+
+[[menu.main]]
+	name = "Post Archive"
+	weight = 1
+	identifier = "microposts"
+	url = "/microposts/"
